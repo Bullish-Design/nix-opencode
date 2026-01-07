@@ -1,10 +1,6 @@
 # AGENTS.md
 
 
-# AGENTS.md
-
-```markdown
-# AGENTS.md
 
 Guide for creating a NixOS devenv.sh managed flake wrapping the opencode LLM agent application.
 
