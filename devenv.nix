@@ -2,32 +2,22 @@
 
 {
   env = {
-    PROJECT_NAME = "opencode";
+    DEVENV_PROJECT = "opencode-wrapper";
   };
 
   packages = with pkgs; [
     git
     curl
     jq
+    ruff
+    pytest
   ];
 
   languages.python = {
     enable = true;
-    version = "3.13";
+    version = "3.12";
     venv.enable = true;
-    uv = {
-      enable = true;
-      sync.enable = true;
-    };
-  };
-
-  languages.javascript = {
-    enable = true;
-    package = pkgs.nodejs_22;
-    pnpm = {
-      enable = true;
-      install.enable = true;
-    };
+    uv.enable = true;
   };
 
   scripts = {
@@ -55,8 +45,6 @@
 
   enterShell = ''
     echo "🐍 Python ${config.languages.python.version}"
-    echo "📦 Node.js $(node --version)"
-    echo "📌 pnpm $(pnpm --version)"
     echo ""
     echo "Available commands:"
     echo "  test   - Run pytest"
@@ -64,7 +52,7 @@
     echo "  lint   - Lint with ruff"
     echo ""
     echo "Quick start:"
-    echo "  uv sync --all-extras"
+    echo "  uv sync"
     echo "  test"
   '';
 
