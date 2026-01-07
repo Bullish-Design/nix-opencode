@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencode-wrapper"
+version = "0.1.0"
+description = "Nix-friendly wrapper for the opencode LLM agent"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Bullish-Design" }]
+dependencies = [
+  "typer>=0.12",
+  "pydantic>=2.6",
+  "pyyaml>=6.0",
+  "platformdirs>=4.2",
+  "opencode @ git+https://github.com/AmadeusITGroup/opencode@main",
+]
+
+[project.scripts]
+opencode-wrapper = "opencode_wrapper.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
